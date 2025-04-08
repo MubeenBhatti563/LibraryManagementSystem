@@ -1,25 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace LibraryManagementSystem
 {
     public partial class Dashboard : UserControl
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\WINDOWS 10\Documents\library.mdf;Integrated Security=True;Connect Timeout=30");
+        MySqlConnection connect = new MySqlConnection(
+            "Server=localhost;Port=3306;Database=loginform;Uid=root;Pwd=mubeen123;");
 
         public Dashboard()
         {
             InitializeComponent();
-
             displayAB();
             displayIB();
             displayRB();
@@ -27,13 +20,11 @@ namespace LibraryManagementSystem
 
         public void refreshData()
         {
-
             if (InvokeRequired)
             {
                 Invoke((MethodInvoker)refreshData);
                 return;
             }
-
             displayAB();
             displayIB();
             displayRB();
@@ -41,32 +32,26 @@ namespace LibraryManagementSystem
 
         public void displayAB()
         {
-            if(connect.State == ConnectionState.Closed)
+            try
             {
-                try
+                connect.Open();
+                string selectData = "SELECT COUNT(id) FROM books " +
+                    "WHERE status = 'Available' AND date_delete IS NULL";
+
+                using (MySqlCommand cmd = new MySqlCommand(selectData, connect))
                 {
-                    connect.Open();
-                    string selectData = "SELECT COUNT(id) FROM books " +
-                        "WHERE status = 'Available' AND date_delete IS NULL";
-
-                    using(SqlCommand cmd = new SqlCommand(selectData, connect))
-                    {
-                        SqlDataReader reader = cmd.ExecuteReader();
-                        int tempAB = 0;
-
-                        if (reader.Read())
-                        {
-                            tempAB = Convert.ToInt32(reader[0]);
-
-                            dashboard_AB.Text = tempAB.ToString();
-                        }
-                    }
+                    object result = cmd.ExecuteScalar();
+                    dashboard_AB.Text = result?.ToString() ?? "0";
                 }
-                catch(Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error counting available books: " + ex.Message,
+                    "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (connect.State == ConnectionState.Open)
                 {
                     connect.Close();
                 }
@@ -75,32 +60,26 @@ namespace LibraryManagementSystem
 
         public void displayIB()
         {
-            if (connect.State == ConnectionState.Closed)
+            try
             {
-                try
+                connect.Open();
+                string selectData = "SELECT COUNT(id) FROM issues " +
+                    "WHERE date_delete IS NULL";
+
+                using (MySqlCommand cmd = new MySqlCommand(selectData, connect))
                 {
-                    connect.Open();
-                    string selectData = "SELECT COUNT(id) FROM issues " +
-                        "WHERE date_delete IS NULL";
-
-                    using (SqlCommand cmd = new SqlCommand(selectData, connect))
-                    {
-                        SqlDataReader reader = cmd.ExecuteReader();
-                        int tempIB = 0;
-
-                        if (reader.Read())
-                        {
-                            tempIB = Convert.ToInt32(reader[0]);
-
-                            dashboard_IB.Text = tempIB.ToString();
-                        }
-                    }
+                    object result = cmd.ExecuteScalar();
+                    dashboard_IB.Text = result?.ToString() ?? "0";
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error counting issued books: " + ex.Message,
+                    "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (connect.State == ConnectionState.Open)
                 {
                     connect.Close();
                 }
@@ -109,37 +88,30 @@ namespace LibraryManagementSystem
 
         public void displayRB()
         {
-            if (connect.State == ConnectionState.Closed)
+            try
             {
-                try
+                connect.Open();
+                string selectData = "SELECT COUNT(id) FROM issues " +
+                    "WHERE status = 'Return' AND date_delete IS NULL";
+
+                using (MySqlCommand cmd = new MySqlCommand(selectData, connect))
                 {
-                    connect.Open();
-                    string selectData = "SELECT COUNT(id) FROM issues " +
-                        " WHERE status = 'Return' AND date_delete IS NULL";
-
-                    using (SqlCommand cmd = new SqlCommand(selectData, connect))
-                    {
-                        SqlDataReader reader = cmd.ExecuteReader();
-                        int tempRB = 0;
-
-                        if (reader.Read())
-                        {
-                            tempRB = Convert.ToInt32(reader[0]);
-
-                            dashboard_RB.Text = tempRB.ToString();
-                        }
-                    }
+                    object result = cmd.ExecuteScalar();
+                    dashboard_RB.Text = result?.ToString() ?? "0";
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error counting returned books: " + ex.Message,
+                    "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (connect.State == ConnectionState.Open)
                 {
                     connect.Close();
                 }
             }
         }
-
     }
 }

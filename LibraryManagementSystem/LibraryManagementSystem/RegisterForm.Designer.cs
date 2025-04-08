@@ -53,7 +53,7 @@ namespace LibraryManagementSystem
             this.register_showPass.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.register_showPass.Location = new System.Drawing.Point(183, 364);
             this.register_showPass.Name = "register_showPass";
-            this.register_showPass.Size = new System.Drawing.Size(118, 20);
+            this.register_showPass.Size = new System.Drawing.Size(117, 20);
             this.register_showPass.TabIndex = 21;
             this.register_showPass.Text = "Show Password";
             this.register_showPass.UseVisualStyleBackColor = true;
@@ -61,13 +61,13 @@ namespace LibraryManagementSystem
             // 
             // signIn_btn
             // 
-            this.signIn_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(128)))), ((int)(((byte)(87)))));
+            this.signIn_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(17)))), ((int)(((byte)(102)))));
             this.signIn_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.signIn_btn.FlatAppearance.BorderSize = 0;
             this.signIn_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
             this.signIn_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.signIn_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.signIn_btn.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.signIn_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signIn_btn.ForeColor = System.Drawing.Color.White;
             this.signIn_btn.Location = new System.Drawing.Point(20, 489);
             this.signIn_btn.Name = "signIn_btn";
@@ -76,6 +76,8 @@ namespace LibraryManagementSystem
             this.signIn_btn.Text = "SIGN IN";
             this.signIn_btn.UseVisualStyleBackColor = false;
             this.signIn_btn.Click += new System.EventHandler(this.signIn_btn_Click);
+            this.signIn_btn.MouseEnter += new System.EventHandler(this.signIn_btn_MouseEnter);
+            this.signIn_btn.MouseLeave += new System.EventHandler(this.signIn_btn_MouseLeave);
             // 
             // label5
             // 
@@ -89,13 +91,13 @@ namespace LibraryManagementSystem
             // 
             // register_btn
             // 
-            this.register_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(128)))), ((int)(((byte)(87)))));
+            this.register_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(17)))), ((int)(((byte)(102)))));
             this.register_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.register_btn.FlatAppearance.BorderSize = 0;
             this.register_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
             this.register_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.register_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.register_btn.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.register_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.register_btn.ForeColor = System.Drawing.Color.White;
             this.register_btn.Location = new System.Drawing.Point(20, 410);
             this.register_btn.Name = "register_btn";
@@ -104,6 +106,8 @@ namespace LibraryManagementSystem
             this.register_btn.Text = "REGISTER";
             this.register_btn.UseVisualStyleBackColor = false;
             this.register_btn.Click += new System.EventHandler(this.register_btn_Click);
+            this.register_btn.MouseEnter += new System.EventHandler(this.register_btn_MouseEnter);
+            this.register_btn.MouseLeave += new System.EventHandler(this.register_btn_MouseLeave);
             // 
             // register_password
             // 
@@ -147,10 +151,10 @@ namespace LibraryManagementSystem
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(98, 153);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 23);
+            this.label2.Size = new System.Drawing.Size(158, 24);
             this.label2.TabIndex = 13;
             this.label2.Text = "Registration Form";
             // 
@@ -165,7 +169,7 @@ namespace LibraryManagementSystem
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(128)))), ((int)(((byte)(87)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(17)))), ((int)(((byte)(102)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -177,11 +181,11 @@ namespace LibraryManagementSystem
             // 
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(298, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(15, 16);
+            this.label1.Size = new System.Drawing.Size(16, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "X";
             this.label1.Click += new System.EventHandler(this.label1_Click);

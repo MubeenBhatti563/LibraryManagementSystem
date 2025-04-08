@@ -1,70 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace LibraryManagementSystem
 {
     class DataIssueBooks
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\WINDOWS 10\Documents\library.mdf;Integrated Security=True;Connect Timeout=30");
+        MySqlConnection connect = new MySqlConnection(
+            "Server=localhost;Port=3306;Database=loginform;Uid=root;Pwd=mubeen123;");
 
-        public int ID { set; get; }
-        public string IssueID { set; get; }
-        public string Name { set; get; }
-        public string Contact { set; get; }
-        public string Email { set; get; }
-        public string BookTitle { set; get; }
-        public string Author { set; get; }
-        public string DateIssue { set; get; }
-        public string DateReturn { set; get; }
-        public string Status { set; get; }
+        public int ID { get; set; }
+        public string IssueID { get; set; }
+        public string Name { get; set; }
+        public string Contact { get; set; }
+        public string Email { get; set; }
+        public string BookTitle { get; set; }
+        public string Author { get; set; }
+        public string DateIssue { get; set; }
+        public string DateReturn { get; set; }
+        public string Status { get; set; }
 
         public List<DataIssueBooks> IssueBooksData()
         {
             List<DataIssueBooks> listData = new List<DataIssueBooks>();
-            if(connect.State != ConnectionState.Open)
+
+            try
             {
-                try
+                connect.Open();
+                string selectData = "SELECT * FROM issues WHERE date_delete IS NULL";
+
+                using (MySqlCommand cmd = new MySqlCommand(selectData, connect))
                 {
-                    connect.Open();
-
-                    string selectData = "SELECT * FROM issues WHERE date_delete IS NULL";
-
-                    using (SqlCommand cmd = new SqlCommand(selectData, connect))
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-
                         while (reader.Read())
                         {
-                            DataIssueBooks dib = new DataIssueBooks();
-                            dib.ID = (int)reader["id"];
-                            dib.IssueID = reader["issue_id"].ToString();
-                            dib.Name = reader["full_name"].ToString();
-                            dib.Contact = reader["contact"].ToString();
-                            dib.Email = reader["email"].ToString();
-                            dib.BookTitle = reader["book_title"].ToString();
-                            dib.Author = reader["author"].ToString();
-                            dib.DateIssue = reader["issue_date"].ToString();
-                            dib.DateReturn = reader["return_date"].ToString();
-                            dib.Status = reader["status"].ToString();
-
+                            DataIssueBooks dib = new DataIssueBooks
+                            {
+                                ID = Convert.ToInt32(reader["id"]),
+                                IssueID = reader["issue_id"].ToString(),
+                                Name = reader["full_name"].ToString(),
+                                Contact = reader["contact"].ToString(),
+                                Email = reader["email"].ToString(),
+                                BookTitle = reader["book_title"].ToString(),
+                                Author = reader["author"].ToString(),
+                                DateIssue = Convert.ToDateTime(reader["issue_date"]).ToString("yyyy-MM-dd"),
+                                DateReturn = Convert.ToDateTime(reader["return_date"]).ToString("yyyy-MM-dd"),
+                                Status = reader["status"].ToString()
+                            };
                             listData.Add(dib);
                         }
-
-                        reader.Close();
                     }
-
                 }
-                catch(Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex);
-                }
-                finally
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving issue books: " + ex.Message);
+                // Consider logging the full exception details
+            }
+            finally
+            {
+                if (connect.State == ConnectionState.Open)
                 {
                     connect.Close();
                 }
@@ -76,45 +73,44 @@ namespace LibraryManagementSystem
         public List<DataIssueBooks> ReturnIssueBooksData()
         {
             List<DataIssueBooks> listData = new List<DataIssueBooks>();
-            if (connect.State != ConnectionState.Open)
+
+            try
             {
-                try
+                connect.Open();
+                string selectData = "SELECT * FROM issues WHERE status = 'Not Return' AND date_delete IS NULL";
+
+                using (MySqlCommand cmd = new MySqlCommand(selectData, connect))
                 {
-                    connect.Open();
-
-                    string selectData = "SELECT * FROM issues WHERE status = 'Not Return' AND date_delete IS NULL";
-
-                    using (SqlCommand cmd = new SqlCommand(selectData, connect))
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-
                         while (reader.Read())
                         {
-                            DataIssueBooks dib = new DataIssueBooks();
-                            dib.ID = (int)reader["id"];
-                            dib.IssueID = reader["issue_id"].ToString();
-                            dib.Name = reader["full_name"].ToString();
-                            dib.Contact = reader["contact"].ToString();
-                            dib.Email = reader["email"].ToString();
-                            dib.BookTitle = reader["book_title"].ToString();
-                            dib.Author = reader["author"].ToString();
-                            dib.DateIssue = reader["issue_date"].ToString();
-                            dib.DateReturn = reader["return_date"].ToString();
-                            dib.Status = reader["status"].ToString();
-
+                            DataIssueBooks dib = new DataIssueBooks
+                            {
+                                ID = Convert.ToInt32(reader["id"]),
+                                IssueID = reader["issue_id"].ToString(),
+                                Name = reader["full_name"].ToString(),
+                                Contact = reader["contact"].ToString(),
+                                Email = reader["email"].ToString(),
+                                BookTitle = reader["book_title"].ToString(),
+                                Author = reader["author"].ToString(),
+                                DateIssue = Convert.ToDateTime(reader["issue_date"]).ToString("yyyy-MM-dd"),
+                                DateReturn = Convert.ToDateTime(reader["return_date"]).ToString("yyyy-MM-dd"),
+                                Status = reader["status"].ToString()
+                            };
                             listData.Add(dib);
                         }
-
-                        reader.Close();
                     }
-
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex);
-                }
-                finally
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving return books: " + ex.Message);
+                // Consider logging the full exception details
+            }
+            finally
+            {
+                if (connect.State == ConnectionState.Open)
                 {
                     connect.Close();
                 }

@@ -47,7 +47,7 @@ namespace LibraryManagementSystem
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(128)))), ((int)(((byte)(87)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(17)))), ((int)(((byte)(102)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -59,11 +59,11 @@ namespace LibraryManagementSystem
             // 
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(298, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(15, 16);
+            this.label1.Size = new System.Drawing.Size(16, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "X";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -71,10 +71,10 @@ namespace LibraryManagementSystem
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(96, 158);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 23);
+            this.label2.Size = new System.Drawing.Size(145, 24);
             this.label2.TabIndex = 2;
             this.label2.Text = "Welcome, User!";
             // 
@@ -119,13 +119,13 @@ namespace LibraryManagementSystem
             // 
             // loginBtn
             // 
-            this.loginBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(128)))), ((int)(((byte)(87)))));
+            this.loginBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(17)))), ((int)(((byte)(102)))));
             this.loginBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loginBtn.FlatAppearance.BorderSize = 0;
             this.loginBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
             this.loginBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.loginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loginBtn.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginBtn.ForeColor = System.Drawing.Color.White;
             this.loginBtn.Location = new System.Drawing.Point(20, 380);
             this.loginBtn.Name = "loginBtn";
@@ -134,6 +134,8 @@ namespace LibraryManagementSystem
             this.loginBtn.Text = "LOGIN";
             this.loginBtn.UseVisualStyleBackColor = false;
             this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
+            this.loginBtn.MouseEnter += new System.EventHandler(this.loginBtn_MouseEnter);
+            this.loginBtn.MouseLeave += new System.EventHandler(this.loginBtn_MouseLeave);
             // 
             // label5
             // 
@@ -147,13 +149,13 @@ namespace LibraryManagementSystem
             // 
             // signupBtn
             // 
-            this.signupBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(128)))), ((int)(((byte)(87)))));
+            this.signupBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(17)))), ((int)(((byte)(102)))));
             this.signupBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.signupBtn.FlatAppearance.BorderSize = 0;
             this.signupBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
             this.signupBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.signupBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.signupBtn.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.signupBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signupBtn.ForeColor = System.Drawing.Color.White;
             this.signupBtn.Location = new System.Drawing.Point(20, 483);
             this.signupBtn.Name = "signupBtn";
@@ -162,6 +164,8 @@ namespace LibraryManagementSystem
             this.signupBtn.Text = "SIGNUP";
             this.signupBtn.UseVisualStyleBackColor = false;
             this.signupBtn.Click += new System.EventHandler(this.signupBtn_Click);
+            this.signupBtn.MouseEnter += new System.EventHandler(this.signupBtn_MouseEnter);
+            this.signupBtn.MouseLeave += new System.EventHandler(this.signupBtn_MouseLeave);
             // 
             // login_showPass
             // 
@@ -169,7 +173,7 @@ namespace LibraryManagementSystem
             this.login_showPass.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login_showPass.Location = new System.Drawing.Point(183, 343);
             this.login_showPass.Name = "login_showPass";
-            this.login_showPass.Size = new System.Drawing.Size(118, 20);
+            this.login_showPass.Size = new System.Drawing.Size(117, 20);
             this.login_showPass.TabIndex = 10;
             this.login_showPass.Text = "Show Password";
             this.login_showPass.UseVisualStyleBackColor = true;
